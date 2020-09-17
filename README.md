@@ -1,2 +1,2 @@
-#Equipo 6
+# Equipo 6
 Este repositorio...
