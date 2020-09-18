@@ -28,12 +28,12 @@ def centros(puntos):
 
 def cercanos(puntos,centros):
     lista=[[]for x in centros]
-        for i, punto in enumarate(puntos):
-            dist=[]
-            for j, centro in enumarate(centros):
-                dist.append(dist((punto, centro)))
-            min=np.argmin(dist)
-            lista[min].append(punto)
+    for i, punto in enumarate(puntos):
+        dist=[]
+        for j, centro in enumarate(centros):
+            dist.append(dist((punto, centro)))
+        min=np.argmin(dist)
+        lista[min].append(punto)
    return lista
 
 def k_means(puntos):
