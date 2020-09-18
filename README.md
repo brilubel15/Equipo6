@@ -7,7 +7,7 @@ resultados
 explicación del proyecto
 opcional: hisograma o boxplots
 
-##Integrantes del Equipo:
+## Integrantes del Equipo:
 - Brianda Lubel García
 - Arturo Sosa
 - Javier Perdomo
