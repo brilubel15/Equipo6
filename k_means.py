@@ -7,7 +7,7 @@ def distancia(lista1,lista2):
     distancia = distance.euclidean(lista1, lista2)
     return distancia
 
-def centros(puntos):
+def centros(lista):
     # Create an empty list for the new centers
     centros_list = []
 
@@ -23,7 +23,7 @@ def cercanos(puntos,centros):
     for i, punto in enumerate(puntos):
         dist=[]
         for j, centro in enumerate(centros):
-            dist.append(distance(punto,centro))
+            dist.append(distancia(punto,centro))
         min=np.argmin(dist)
         lista[min].append(punto)
     return lista
@@ -58,8 +58,7 @@ def k_means(puntos):
 
     # Redifine puntos and centers adjusting with the methods cercanos() and centros()
     for i in range(100):
-        puntos = cercanos(puntos, k_lista)
-        k_lista = centros(k_lista)
+        k_lista = centros(cercanos(puntos, k_lista))
 
     # Return the new adjustes list
     return k_lista
