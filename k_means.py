@@ -9,29 +9,21 @@ def distancia(lista1,lista2):
 
 def centros(puntos):
     # Create an empty list for the new centers
-    centros = []
+    centros_list = []
 
-    # Convert the list of lists into a numpy array
-    listasnonpy = np.array(puntos)
+    # Convert the list into a numpy array
+    listasnonpy = np.array(lista)
 
-    # Start a loop that goes from 0 to the last list in listas
-    for lista in puntos:
-        sumaParcial = 0
-    # Strart a loop that will get the summatory for the values in each list
-        for i in lista:
-            sumaParcial+=i
-    # Get the avarage for each list and store ir as a center in a list of centers
-        centros.append(sumaParcial/float(len(lista[i])))
-
-    # After going through all the lists, sends the new list of centers
-    return centros
+    for i in listasnonpy:
+        centros_list.append(np.mean(listasnonpy,axis = 0))
+    return centros_list
 
 def cercanos(puntos,centros):
     lista=[[]for x in centros]
-    for i, punto in enumarate(puntos):
+    for i, punto in enumerate(puntos):
         dist=[]
-        for j, centro in enumarate(centros):
-            dist.append(dist((punto, centro)))
+        for j, centro in enumerate(centros):
+            dist.append(distance(punto,centro))
         min=np.argmin(dist)
         lista[min].append(punto)
     return lista
@@ -70,7 +62,7 @@ def k_means(puntos):
         k_lista = centros(k_lista)
 
     # Return the new adjustes list
-    return puntos
+    return k_lista
 
 def generarPuntos(i, j):
     lista = []
@@ -82,7 +74,7 @@ def generarPuntos(i, j):
         puntos.append(lista)
     return puntos
 
-if __name__ == '_main_':
+if __name__ == '__main__':
     puntos = generarPuntos(8, 8)
     print("Antes: ")
     print(puntos)
