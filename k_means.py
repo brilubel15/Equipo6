@@ -34,7 +34,7 @@ def cercanos(puntos,centros):
             dist.append(dist((punto, centro)))
         min=np.argmin(dist)
         lista[min].append(punto)
-   return lista
+    return lista
 
 def k_means(puntos):
     # Set an empty list for centers
