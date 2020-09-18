@@ -26,9 +26,15 @@ def centros(puntos):
     # After going through all the lists, sends the new list of centers
     return centros
 
-def cercanos(puntos, centros):
-
-    return puntos
+   def cercanos(puntos,centros):
+       lista=[[]for x in centros]
+       for i, punto in enumarate(puntos):
+           dist=[]
+           for j, centro in enumarate(centros):
+               dist.append(dist((punto, centro)))
+           min=np.argmin(dist)
+           lista[min].append(punto)
+   return lista
 
 def k_means(puntos):
     # Set an empty list for centers
