@@ -1,6 +1,6 @@
 from scipy.spatial import distance
 from sklearn.cluster import KMeans
-import nompy as np
+import numpy as np
 import random
 
 def distancia(lista1,lista2):
