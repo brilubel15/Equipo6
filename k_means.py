@@ -29,36 +29,21 @@ def cercanos(puntos,centros):
     return lista
 
 def k_means(puntos):
-    # Set an empty list for centers
-    k_lista = []
+    cantidad_de_centros = 0
+    points = np.array(puntos)
+    # cantidad_de_centros = int(input("Elija la cantidad de centros: "))
+    cantidad_de_centros = 3
+    idx = np.random.randint(len(points),size=cantidad_de_centros)
 
-    # Search for the minimum and maximum value in the lists of puntos
-    min = puntos[0][0]
-    max = min
-    for lista in puntos:
-        for i in lista:
-            temp = i
-            if(temp<min):
-                min = temp
-            elif(temp>max):
-                max = temp
+    k_lista = points[idx,:]
 
-    # Define the quantity of ceners according to the quantity of data
-    length = 0
-    for lista in puntos:
-        length+=len(lista)
-    if length>3:
-        n = random.randint(2, (len(puntos)+1)/3)
-    else:
-        n = random.randint(2, 3)
-
-    # Create n of centers between the minimum and maximum value in puntos
-    for i in range(2, n):
-        k_lista.append(random.randint(min, max))
+    # print("Puntos: ")
+    # print(puntos)
+    # print("Centros: ")
+    # print(k_lista)
 
     # Redifine puntos and centers adjusting with the methods cercanos() and centros()
     for i in range(100):
-        import pdb; pdb.set_trace()
         k_lista = centros(cercanos(puntos, k_lista))
 
     # Return the new adjustes list
