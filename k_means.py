@@ -1,5 +1,5 @@
 from scipy.spatial import distance
-from sklearn.cluster import KMeans
+#from sklearn.cluster import KMeans
 import numpy as np
 import random
 
@@ -58,6 +58,7 @@ def k_means(puntos):
 
     # Redifine puntos and centers adjusting with the methods cercanos() and centros()
     for i in range(100):
+        import pdb; pdb.set_trace()
         k_lista = centros(cercanos(puntos, k_lista))
 
     # Return the new adjustes list
