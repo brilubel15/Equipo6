@@ -82,7 +82,7 @@ def generarPuntos(i, j):
         puntos.append(lista)
     return puntos
 
-if _name_ == '_main_':
+if __name__ == '_main_':
     puntos = generarPuntos(8, 8)
     print("Antes: ")
     print(puntos)
