@@ -4,8 +4,9 @@ import numpy as np
 import random
 
 def distancia(lista1,lista2):
-    distancia = distance.euclidean(lista1, lista2)
-    return distancia
+    #import pdb; pdb.set_trace()
+    dist = distance.euclidean(lista1, lista2)
+    return dist
 
 def centros(lista):
     # Create an empty list for the new centers
@@ -20,6 +21,7 @@ def centros(lista):
 
 def cercanos(puntos,centros):
     lista=[[]for x in centros]
+    #import pdb; pdb.set_trace()
     for i, punto in enumerate(puntos):
         dist=[]
         for j, centro in enumerate(centros):
@@ -44,26 +46,27 @@ def k_means(puntos):
 
     # Redifine puntos and centers adjusting with the methods cercanos() and centros()
     for i in range(100):
-        k_lista = centros(cercanos(puntos, k_lista))
+        k_lista = centros(cercanos(points, k_lista))
 
     # Return the new adjustes list
     return k_lista
 
 def generarPuntos(i, j):
-    lista = []
     puntos = []
-    j= (int)(j/i)
+    #j= (int)(j/i)
     for cony in range(i):
+        lista=[]
         for conx in range(j):
             lista.append(random.randint(0, 100))
         puntos.append(lista)
     return puntos
 
 if __name__ == '__main__':
-    puntos = generarPuntos(8, 8)
+    puntos = generarPuntos(100, 8)
     print("Antes: ")
     print(puntos)
 
-    k_means(puntos)
+
+    cluster=k_means(puntos)
     print("Despues: ")
-    print(puntos)
+    print(cluster)
