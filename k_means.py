@@ -15,7 +15,7 @@ def centros(lista):
     listasnonpy = np.array(lista)
 
     for i in listasnonpy:
-        centros_list.append(np.mean(listasnonpy,axis = 0))
+        centros_list.append(np.mean(i, axis = 0))
     return centros_list
 
 def cercanos(puntos,centros):
@@ -24,8 +24,8 @@ def cercanos(puntos,centros):
         dist=[]
         for j, centro in enumerate(centros):
             dist.append(distancia(punto,centro))
-        min=np.argmin(dist)
-        lista[min].append(punto)
+        small=np.argmin(dist)
+        lista[small].append(punto)
     return lista
 
 def k_means(puntos):
