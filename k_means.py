@@ -1,7 +1,10 @@
 from scipy.spatial import distance
-#from sklearn.cluster import KMeans
+from sklearn.cluster import KMeans
 import numpy as np
 import random
+import matplotlib.pyplot as plt
+import matplotlib
+from visualizations import show_clusters_centroids
 
 def distancia(lista1,lista2):
     #import pdb; pdb.set_trace()
@@ -38,22 +41,23 @@ def k_means(puntos):
     idx = np.random.randint(len(points),size=cantidad_de_centros)
 
     k_lista = points[idx,:]
-
-    # print("Puntos: ")
-    # print(puntos)
-    # print("Centros: ")
-    # print(k_lista)
-
+    clusters = cercanos(points, k_lista)
     # Redifine puntos and centers adjusting with the methods cercanos() and centros()
     for i in range(100):
-        k_lista = centros(cercanos(points, k_lista))
+        if i % 1 == 0:
+            if i == 0:
+                title = "Initialization"
+            else:
+                title = "Iteration {}".format(i+1)
+        show_clusters_centroids(clusters, k_lista, title)
+        clusters = cercanos(points, k_lista)
+        k_lista = centros(clusters)
 
-    # Return the new adjustes list
+    # Return the new adjusts list
     return k_lista
 
 def generarPuntos(i, j):
     puntos = []
-    #j= (int)(j/i)
     for cony in range(i):
         lista=[]
         for conx in range(j):
